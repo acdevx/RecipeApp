@@ -17,6 +17,15 @@ class Recipe: Identifiable, Codable {
     internal var cookTime: String
     internal var totalTime: String
     internal var servings: Int
-    internal var ingredients: [String]
+    internal var highlights: [String]
+    internal var ingredients: [Ingredient]
     internal var directions: [String]
+}
+
+class Ingredient: Identifiable, Codable {
+    internal var id: UUID?
+    internal var name: String
+    internal var num: Int?
+    internal var denom: Int?
+    internal var unit: String?
 }

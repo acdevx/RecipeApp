@@ -37,6 +37,11 @@ class DataService {
                 // Add unique IDs
                 for item in recipeData {
                     item.id = UUID()
+                    
+                    // Add unique IDs to recipe ingredients
+                    for ingredients in item.ingredients {
+                        ingredients.id = UUID()
+                    }
                 }
                 
                 // Return the recipes

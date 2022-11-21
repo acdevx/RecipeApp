@@ -28,8 +28,8 @@ struct DetailView: View {
                         .font(.title2)
                         .padding(.bottom, 1.5)
                     
-                    ForEach(recipe.ingredients, id: \.self) { item in
-                        Text("\u{2022} \(item)")
+                    ForEach(recipe.ingredients) { item in
+                        Text("\u{2022} \(item.name)")
                             .padding(.bottom, 1.1)
                     }
                     
