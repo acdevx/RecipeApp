@@ -13,23 +13,37 @@ struct RecipeListView: View {
     
     var body: some View {
         NavigationView {
-            List(model.recipes) { item in
+            VStack(alignment: .leading) {
                 
-                NavigationLink {
-                    DetailView(recipe: item)
-                } label: {
-                    HStack(spacing: 20.0) {
-                        Image(item.image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80, alignment: .center)
-                            .clipped()
-                            .cornerRadius(10)
-                        Text(item.name)
+                Text("All Recipes")
+                    .font(.system(.largeTitle, design: .rounded))
+                    .bold()
+                    .padding(.top, 40.0)
+                
+                ScrollView {
+                    LazyVStack (alignment: .leading) {
+                        ForEach(model.recipes) { item in
+                            
+                            NavigationLink {
+                                DetailView(recipe: item)
+                            } label: {
+                                HStack(spacing: 20.0) {
+                                    Image(item.image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 80, height: 80, alignment: .center)
+                                        .clipped()
+                                        .cornerRadius(10)
+                                    Text(item.name)
+                                        .foregroundColor(.black)
+                                }
+                            }
+                        }
+                        .navigationBarHidden(true)
                     }
                 }
             }
-            .navigationTitle("All Recipes") 
+            .padding(.leading)
         }
     }
 }
